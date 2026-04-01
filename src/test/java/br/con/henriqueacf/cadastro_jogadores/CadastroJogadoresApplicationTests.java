@@ -1,10 +1,10 @@
-package com.henriqueacf.Cadastro_Jogadores_SpringBoot;
+package br.con.henriqueacf.cadastro_jogadores;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CadastroJogadoresSpringBootApplicationTests {
+class CadastroJogadoresApplicationTests {
 
 	@Test
 	void contextLoads() {
