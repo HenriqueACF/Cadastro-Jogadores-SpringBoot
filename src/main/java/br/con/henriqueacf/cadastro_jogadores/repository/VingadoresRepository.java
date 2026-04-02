@@ -1,6 +1,7 @@
 package br.con.henriqueacf.cadastro_jogadores.repository;
 
 import br.con.henriqueacf.cadastro_jogadores.model.GrupoCodinome;
+import br.con.henriqueacf.cadastro_jogadores.web.VingadoresDTO;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Repository;
@@ -12,7 +13,7 @@ import java.util.List;
 @Repository
 public class VingadoresRepository implements CodinomeRepository{
     @Override
-    public List<String> buscarCodinomes() {
+    public List<String> buscarCodinomes() throws Exception {
         var codinomes = RestClient
                 .builder()
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
