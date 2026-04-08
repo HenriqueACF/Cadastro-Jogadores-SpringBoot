@@ -4,6 +4,7 @@ import br.con.henriqueacf.cadastro_jogadores.model.GrupoCodinome;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class CodinomeService {
@@ -14,7 +15,7 @@ public class CodinomeService {
     }
 
 
-    public String gerarCodinome(GrupoCodinome grupoCodinome, List<String> codinomesEmUso){
+    public String gerarCodinome(GrupoCodinome grupoCodinome, List<String> codinomesEmUso) throws Exception{
         var codinomesDisponiveis = listarCodinomesDisponiveis(grupoCodinome, codinomesEmUso);
             if(codinomesDisponiveis.isEmpty())
                throw new Exception("Não há codinomes disponíveis para o grupo " + grupoCodinome.getNome());
@@ -23,7 +24,8 @@ public class CodinomeService {
             return codinomeSorteado;
     }
 
-    private List<String> listarCodinomesDisponiveis(GrupoCodinome grupoCodinome, List<String> codinomesEmUso) {
+    private List<String> listarCodinomesDisponiveis(GrupoCodinome grupoCodinome, List<String> codinomesEmUso)  throws Exception
+    {
         var codinomes = buscarCodinomes(grupoCodinome);
 
         var codinomesDisponivies = codinomes
@@ -34,8 +36,13 @@ public class CodinomeService {
         return codinomesDisponivies;
     }
 
-    private List<String> buscarCodinomes(GrupoCodinome grupoCodinome) {
+    private List<String> buscarCodinomes(GrupoCodinome grupoCodinome) throws Exception {
         // FACTORY
         var codinomeRepository = codinomeRepositoryFactory.create(grupoCodinome);
+        return codinomeRepository.buscarCodinomes();
+    }
+
+    private String sortearCodinome(List<String> codinomesDisponiveis){
+        return codinomesDisponiveis.get((int)(Math.random() * codinomesDisponiveis.size()));
     }
 }
