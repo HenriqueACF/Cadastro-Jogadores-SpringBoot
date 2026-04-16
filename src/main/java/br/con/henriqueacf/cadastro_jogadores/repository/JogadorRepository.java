@@ -1,8 +1,12 @@
 package br.con.henriqueacf.cadastro_jogadores.repository;
 
+import br.con.henriqueacf.cadastro_jogadores.model.GrupoCodinome;
 import br.con.henriqueacf.cadastro_jogadores.model.Jogador;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 
 @Repository
 public class JogadorRepository {
@@ -24,5 +28,12 @@ public class JogadorRepository {
                 .param("grupoCodinome", jogador.grupoCodinome())
                 .update();
                 return jogador;
+    }
+
+    public List<String> listarCodinomesPorGrupo(GrupoCodinome grupoCodinome) {
+        return jdbcClient.sql("SELECT distinct(codinomes) FROM JOGADORES WHERE grupo_codinome = :grupoCodinome")
+                .param("grupoCodinome", grupoCodinome.name())
+                .query(String.class)
+                .list();
     }
 }
