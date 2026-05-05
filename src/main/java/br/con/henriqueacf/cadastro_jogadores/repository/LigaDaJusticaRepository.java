@@ -3,10 +3,11 @@ package br.con.henriqueacf.cadastro_jogadores.repository;
 import br.con.henriqueacf.cadastro_jogadores.model.GrupoCodinome;
 import br.con.henriqueacf.cadastro_jogadores.web.LigaDaJusticaDTO;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestClient;
 
 import java.util.List;
-
+@Repository
 public class LigaDaJusticaRepository implements CodinomeRepository{
     @Override
     public List<String> buscarCodinomes() throws Exception {

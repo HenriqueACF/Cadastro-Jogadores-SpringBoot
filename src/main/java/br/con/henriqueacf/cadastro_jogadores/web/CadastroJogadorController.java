@@ -1,8 +1,11 @@
 package br.con.henriqueacf.cadastro_jogadores.web;
 
+import br.con.henriqueacf.cadastro_jogadores.model.GrupoCodinome;
 import br.con.henriqueacf.cadastro_jogadores.model.Jogador;
 import br.con.henriqueacf.cadastro_jogadores.service.JogadorService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +17,13 @@ public class CadastroJogadorController {
 
     public CadastroJogadorController(JogadorService jogadorService){
         this.jogadorService = jogadorService;
+    }
+
+    @GetMapping
+    public String paginaCadastroJogador(Model model){
+        model.addAttribute("jogador", new Jogador(null, null, null, null, null));
+        model.addAttribute("gruposCodinomes", GrupoCodinome.values()); // agora com "grupos"
+        return "cadastro-jogador";
     }
 
     @PostMapping
