@@ -22,7 +22,7 @@ public class CadastroJogadorController {
     @GetMapping
     public String paginaCadastroJogador(Model model){
         model.addAttribute("jogador", new Jogador(null, null, null, null, null));
-        model.addAttribute("gruposCodinomes", GrupoCodinome.values()); // agora com "grupos"
+        model.addAttribute("gruposCodinomes", GrupoCodinome.values());
         return "cadastro-jogador";
     }
 
