@@ -34,4 +34,8 @@ public class JogadorService {
     private List<String> listarCodinomesEmUso(GrupoCodinome grupoCodinome) {
         return jogadorRepository.listarCodinomesPorGrupo(grupoCodinome);
     }
+
+    public List<Jogador> listarJogadores() {
+        return jogadorRepository.listarJogadores();
+    }
 }
