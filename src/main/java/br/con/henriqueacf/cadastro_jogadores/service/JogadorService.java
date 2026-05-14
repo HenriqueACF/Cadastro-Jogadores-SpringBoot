@@ -3,11 +3,14 @@ package br.con.henriqueacf.cadastro_jogadores.service;
 import br.con.henriqueacf.cadastro_jogadores.model.GrupoCodinome;
 import br.con.henriqueacf.cadastro_jogadores.model.Jogador;
 import br.con.henriqueacf.cadastro_jogadores.repository.JogadorRepository;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@EnableCaching
 public class JogadorService {
     private final JogadorRepository jogadorRepository;
     private final CodinomeService codinomeService;
