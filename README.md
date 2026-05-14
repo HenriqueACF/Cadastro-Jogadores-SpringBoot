@@ -1,7 +1,8 @@
 <h1 align="center">
   Desafio Cadastro Jogadores
 </h1>
-
+ 
+Este projeto é a resolução de um teste Backend Java da UOL. Resolvido com intuito de aprendizado e aprimoramento do conhecimento em SpringBoot.
 
 ## Tecnologias
 
@@ -18,7 +19,7 @@
 - [x] Listagem de Jogador
 - [x] Tela de Cadastro e Listagem
 - [x] Validações e Tratamento de Exceções
-- [ ] Teste de Integração
+- [x] Teste de Integração
 
 ## Arquitetura
 
