@@ -1,5 +1,6 @@
 package br.con.henriqueacf.cadastro_jogadores.service;
 
+import br.con.henriqueacf.cadastro_jogadores.exception.GrupoCodinomeIndisponivelException;
 import br.con.henriqueacf.cadastro_jogadores.model.GrupoCodinome;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ public class CodinomeService {
     public String gerarCodinome(GrupoCodinome grupoCodinome, List<String> codinomesEmUso) throws Exception{
         var codinomesDisponiveis = listarCodinomesDisponiveis(grupoCodinome, codinomesEmUso);
             if(codinomesDisponiveis.isEmpty())
-               throw new Exception("Não há codinomes disponíveis para o grupo " + grupoCodinome.getNome());
+               throw new GrupoCodinomeIndisponivelException();
 
             var codinomeSorteado = sortearCodinome(codinomesDisponiveis);
             return codinomeSorteado;

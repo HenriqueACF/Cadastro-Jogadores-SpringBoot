@@ -1,9 +1,13 @@
 package br.con.henriqueacf.cadastro_jogadores.model;
 
+import jakarta.validation.constraints.NotBlank;
+import org.springframework.validation.annotation.Validated;
+
+@Validated
 public record Jogador(
-        String nome,
-        String email,
-        String telefone,
+        @NotBlank String nome,
+        @NotBlank String email,
+        @NotBlank String telefone,
         String codinome,
-        GrupoCodinome grupoCodinome) {
+        @NotBlank GrupoCodinome grupoCodinome) {
 }
